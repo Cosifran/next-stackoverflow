@@ -9,6 +9,11 @@ import {
 } from "@clerk/nextjs";
 import { Geist, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+// Import context
+import ThemeProvider from "@/context/ThemeProvider";
+// Import React
+import React from "react";
+
 
 const inter = Geist({
   variable: "--font-geist-sans",
@@ -25,9 +30,9 @@ const grotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "social-media-app",
   description: "Social Media App with Next.js and Clerk Authentication",
-  icons:{
+  icons: {
     icon: "/assets/icons/site-logo.svg",
-  }
+  },
 };
 
 export default function RootLayout({
@@ -36,14 +41,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider appearance={
-      {
-        elements:{
+    <ClerkProvider
+      appearance={{
+        elements: {
           formButtonPrimary: "primary-gradient",
-          footerActionLink: `primary-text-gradient hover:text-primary-500`
-        }
-      }
-    }>
+          footerActionLink: `primary-text-gradient hover:text-primary-500`,
+        },
+      }}
+    >
       <html lang="en">
         <body
           className={`${inter.variable} ${grotesk.variable} antialiased`}
@@ -58,7 +63,8 @@ export default function RootLayout({
               <UserButton />
             </SignedIn>
           </header>
-          {children}
+
+          <ThemeProvider>{children}</ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
