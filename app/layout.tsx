@@ -1,12 +1,5 @@
 import { type Metadata } from "next";
-import {
-  ClerkProvider,
-  SignInButton,
-  SignUpButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs";
 import { Geist, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 // Import context
@@ -54,16 +47,6 @@ export default function RootLayout({
           className={`${inter.variable} ${grotesk.variable} antialiased`}
           suppressHydrationWarning
         >
-          <header className="flex justify-end items-center p-4 gap-4 h-16">
-            <SignedOut>
-              <SignInButton />
-              <SignUpButton />
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
-          </header>
-
           <ThemeProvider>{children}</ThemeProvider>
         </body>
       </html>

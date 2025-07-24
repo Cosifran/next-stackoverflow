@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: ["class"],
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -16,6 +17,8 @@ const config: Config = {
     },
     extend: {
       colors: {
+        border: "hsl(var(--border))",
+		foreground: "hsl(var(--foreground))",
         primary: {
           500: "#FF7000",
           100: "#FFF1E6",
@@ -36,6 +39,7 @@ const config: Config = {
           400: "#858EAD",
         },
         "accent-blue": "#1DA1F2",
+		background: "hsl(var(--background))",
       },
       fontFamily: {
         inter: ["var(--font-inter)"],
@@ -55,6 +59,11 @@ const config: Config = {
       },
       screens: {
         xs: "420px",
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
         "accordion-down": {
